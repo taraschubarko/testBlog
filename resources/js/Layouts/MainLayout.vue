@@ -6,8 +6,13 @@
                     <q-avatar>
                         <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
                     </q-avatar>
-                    Title
+                    Blog
                 </q-toolbar-title>
+                <div class="sig">
+                    <q-icon name="login" size="24px" class="q-mr-md"/>
+                    <app-link label="Sign In" href="/auth/signIn"/> /
+                    <app-link label="Sign Up" href="/auth/signUp"/>
+                </div>
             </q-toolbar>
         </q-header>
 
@@ -18,8 +23,10 @@
 </template>
 
 <script>
+import AppLink from "../Components/App/AppLink.vue";
 export default {
-    name: "MainLayout"
+    name: "MainLayout",
+    components: {AppLink}
 }
 </script>
 

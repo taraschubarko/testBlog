@@ -1,5 +1,5 @@
 <template>
-    <Head title="Blog"/>
+    <app-head title="Blog"/>
     <main-layout>
         <q-page padding>
             asdasdas
@@ -8,16 +8,14 @@
 </template>
 
 <script>
-import {Head} from '@inertiajs/inertia-vue3';
 import MainLayout from "../../Layouts/MainLayout.vue";
+import AppHead from "../../Components/App/AppHead.vue";
 export default {
     name: "PageIndex",
-    components:{MainLayout, Head}
+    components:{AppHead, MainLayout}
 }
 </script>
 
 <style lang="scss" scoped>
-.txt{
-    padding: 50px;
-}
+
 </style>

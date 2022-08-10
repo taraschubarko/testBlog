@@ -41,6 +41,11 @@
   resolved "https://registry.yarnpkg.com/@inertiajs/server/-/server-0.1.0.tgz#bc48738b1c1c1f806bee6c9e9ea827cd03521e16"
   integrity sha512-Ab1DqaRgW53nZq3sPN1AitHPJ1UoHiTRLbdGGgrswO6HhTYu6m7aewY80+YtiL1VEWGJfOumeNPqhnY+3/414w==
 
+"@quasar/extras@^1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.15.1.tgz#525e71cc41fe525044a1f36e94dc34481e4baa83"
+  integrity sha512-c8nL5ccja+2xlQrcyraxdzcnn297rDzjH0LcyeqShcsRA5+6Yr6wQD9BEzpFgNTZvpP51sZlQHfV07nUd9OxDA==
+
 "@quasar/vite-plugin@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@quasar/vite-plugin/-/vite-plugin-1.1.1.tgz#8c48de29e3ec9601430c36eea4cb7b709291c68a"

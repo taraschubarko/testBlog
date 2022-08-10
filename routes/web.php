@@ -17,3 +17,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Public/PageIndex');
 });
+
+Route::middleware('guest')->prefix('auth')->group(function (){
+    Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
+});

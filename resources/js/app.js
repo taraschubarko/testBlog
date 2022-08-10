@@ -1,9 +1,11 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import {usePage} from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { Quasar, Notify } from 'quasar';
-import 'quasar-extras/material-icons/material-icons.css'
+import '@quasar/extras/material-icons/material-icons.css'
+import '@quasar/extras/fontawesome-v5/fontawesome-v5.css'
 import 'quasar/src/css/index.sass'
 import '../scss/app.scss'
 
@@ -17,6 +19,11 @@ createInertiaApp({
             .use(plugin)
             .use(Quasar, {
                 plugins:{Notify}
+            })
+            .mixin({
+                computed:{
+                    $user: () => usePage().props.value.auth.user,
+                }
             })
             .mount(el)
     },
