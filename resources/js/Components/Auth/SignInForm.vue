@@ -22,7 +22,7 @@
         </q-input>
         <q-btn label="Login" :loading="loading" color="primary" type="submit" class="full-width q-mb-md"/>
         <div class="text-center">
-            <app-link href="/auth/signUp" label="Sign Up"/>
+            <app-link :href="route('register')" label="Sign Up"/>
         </div>
     </q-form>
 </template>

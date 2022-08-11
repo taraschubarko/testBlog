@@ -21,6 +21,8 @@ Route::get('post/{post:slug}', [\App\Http\Controllers\PostController::class, 'sh
 Route::middleware('guest')->prefix('auth')->group(function (){
     Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
     Route::post('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'store'])->name('login');
+    Route::get('signUp', [\App\Http\Controllers\Auth\SignUpController::class, 'create'])->name('register');
+    Route::post('signUp', [\App\Http\Controllers\Auth\SignUpController::class, 'store'])->name('register');
 });
 
 Route::middleware('auth')->group(function () {

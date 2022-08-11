@@ -11,7 +11,7 @@
                 <div class="sig" v-if="!$user">
                     <q-icon name="login" size="24px" class="q-mr-md"/>
                     <app-link label="Sign In" :href="route('login')"/> /
-                    <app-link label="Sign Up" href="/auth/signUp"/>
+                    <app-link label="Sign Up" :href="route('register')"/>
                 </div>
                 <user-avatar-menu v-if="$user"/>
             </q-toolbar>
