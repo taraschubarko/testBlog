@@ -8,7 +8,7 @@
                     </q-avatar>
                     Blog
                 </q-toolbar-title>
-                <div class="sig">
+                <div class="sig" v-if="!$user">
                     <q-icon name="login" size="24px" class="q-mr-md"/>
                     <app-link label="Sign In" href="/auth/signIn"/> /
                     <app-link label="Sign Up" href="/auth/signUp"/>
