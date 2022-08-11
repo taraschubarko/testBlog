@@ -14,7 +14,9 @@ use Inertia\Inertia;
 |
 */
 Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('home');
-Route::get('post/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.slug');
+Route::get('post/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])
+    ->middleware(['postViewOnlyAuth'])
+    ->name('post.slug');
 
 Route::middleware('guest')->prefix('auth')->group(function (){
     Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
