@@ -6,7 +6,7 @@
                 <q-item clickable v-close-popup>
                     <q-item-section>New post</q-item-section>
                 </q-item>
-                <q-item clickable v-close-popup>
+                <q-item clickable v-close-popup :href="route('my.posts')">
                     <q-item-section>My posts</q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup :href="route('logout')">

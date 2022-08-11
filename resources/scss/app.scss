@@ -7,3 +7,10 @@ a{
     text-decoration: none;
     color: $primary;
 }
+.badge-published,
+.badge-public{
+    background-color: $green;
+}
+.badge-canceled{
+    background-color: $red;
+}

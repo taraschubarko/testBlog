@@ -26,4 +26,6 @@ Route::middleware('guest')->prefix('auth')->group(function (){
 Route::middleware('auth')->group(function () {
     Route::post('logout', [\App\Http\Controllers\Auth\SignInController::class, 'destroy'])->name('logout');
     Route::get('logout', [\App\Http\Controllers\Auth\SignInController::class, 'destroy'])->name('logout');
+    //Пости авторизованого користувача
+    Route::get('my-posts', [\App\Http\Controllers\UserPostsController::class, 'index'])->name('my.posts');
 });
