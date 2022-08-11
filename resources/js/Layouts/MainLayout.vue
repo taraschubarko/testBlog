@@ -10,9 +10,10 @@
                 </q-toolbar-title>
                 <div class="sig" v-if="!$user">
                     <q-icon name="login" size="24px" class="q-mr-md"/>
-                    <app-link label="Sign In" href="/auth/signIn"/> /
+                    <app-link label="Sign In" :href="route('login')"/> /
                     <app-link label="Sign Up" href="/auth/signUp"/>
                 </div>
+                <user-avatar-menu v-if="$user"/>
             </q-toolbar>
         </q-header>
 
@@ -24,9 +25,10 @@
 
 <script>
 import AppLink from "../Components/App/AppLink.vue";
+import UserAvatarMenu from "../Components/User/UserAvatarMenu.vue";
 export default {
     name: "MainLayout",
-    components: {AppLink}
+    components: {UserAvatarMenu, AppLink}
 }
 </script>
 

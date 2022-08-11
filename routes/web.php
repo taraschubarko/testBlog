@@ -16,8 +16,14 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Public/PageIndex');
-});
+})->name('home');
 
 Route::middleware('guest')->prefix('auth')->group(function (){
     Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
+    Route::post('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'store'])->name('login');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [\App\Http\Controllers\Auth\SignInController::class, 'destroy'])->name('logout');
+    Route::get('logout', [\App\Http\Controllers\Auth\SignInController::class, 'destroy'])->name('logout');
 });

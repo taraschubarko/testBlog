@@ -3,6 +3,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import {usePage} from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { Quasar, Notify } from 'quasar';
 import '@quasar/extras/material-icons/material-icons.css'
 import '@quasar/extras/fontawesome-v5/fontawesome-v5.css'
@@ -17,12 +18,26 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(ZiggyVue)
             .use(Quasar, {
                 plugins:{Notify}
             })
             .mixin({
                 computed:{
                     $user: () => usePage().props.value.auth.user,
+                },
+                methods:{
+                    $notyErr:(err) => {
+                        let li = [];
+                        Object.keys(err).map(v => {
+                            li.push(`<li>${err[v]}</li>`)
+                        })
+                        Notify.create({
+                            type: 'negative',
+                            html: true,
+                            message: `<ul>${li}</ul>`
+                        });
+                    }
                 }
             })
             .mount(el)
