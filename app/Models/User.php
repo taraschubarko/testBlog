@@ -52,4 +52,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Ролі користувачів
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    //
+    public function setPasswordAttribute($val)
+    {
+        $this->attributes['password'] = bcrypt(trim($val));
+    }
+
+
 }
