@@ -32,7 +32,8 @@ return [
 
     'paths' => [
         public_path('upload'),
-        public_path('images')
+        public_path('images'),
+        storage_path('app/public'),
     ],
 
     /*

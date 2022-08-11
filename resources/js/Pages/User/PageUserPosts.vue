@@ -65,11 +65,11 @@ export default {
         }
     },
 
-    watch: {
-        '$page.props.items.current_page': function (newValue, oldValue) {
-            this.$inertia.get(route('my.posts'), {page: newValue});
-        }
-    },
+    // watch: {
+    //     '$page.props.items.current_page': function (newValue, oldValue) {
+    //         this.$inertia.get(route('my.posts'), {page: newValue});
+    //     }
+    // },
 }
 </script>
 

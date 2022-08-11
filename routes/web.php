@@ -13,10 +13,8 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return Inertia::render('Public/PageIndex');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('home');
+Route::get('post/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.slug');
 
 Route::middleware('guest')->prefix('auth')->group(function (){
     Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
