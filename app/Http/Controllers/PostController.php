@@ -63,7 +63,8 @@ class PostController extends Controller
         return inertia('Post/PagePostEdit', [
             'form' => PostEditResource::make($post),
             'gallery' => $post->images,
-            'type' => $postConfig['type']
+            'type' => $postConfig['type'],
+            'note' => $post->status === 'canceled' ? $post->note : null
         ]);
     }
 

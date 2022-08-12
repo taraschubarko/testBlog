@@ -42,7 +42,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function edit(User $user, Post $post)
     {
-        if($post->status === 'published' || $post->status === 'moderate'){
+        if($post->status === 'published' || $post->status === 'moderate' || $post->status === 'blocked'){
             return false;
         }
         return  true;
@@ -80,7 +80,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        if($post->status === 'published' || $post->status === 'moderate'){
+        if($post->status === 'published' || $post->status === 'moderate' || $post->status === 'blocked'){
             return false;
         }
         return $user->id === $post->user_id;

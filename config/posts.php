@@ -6,7 +6,8 @@ return [
         'crated' => 'New',
         'published' => 'Published',
         'moderate' => 'Moderate',
-        'canceled' => 'Canceled'
+        'canceled' => 'Canceled',
+        'blocked' => 'Blocked',
     ],
     //Тип посту
     'type' => [

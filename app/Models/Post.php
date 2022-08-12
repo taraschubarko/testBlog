@@ -36,7 +36,12 @@ class Post extends Model
 
     public function notes()
     {
-        return $this->belongsToMany(PostNote::class);
+        return $this->hasMany(PostNote::class);
+    }
+
+    public function note()
+    {
+        return $this->hasOne(PostNote::class);
     }
 
     public function user()

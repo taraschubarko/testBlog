@@ -1,5 +1,8 @@
 <template>
     <app-wrp title="Edit Post">
+        <q-banner inline-actions rounded class="bg-orange text-white q-mb-md" v-if="$page.props.note">
+            {{$page.props.note.text}}
+        </q-banner>
         <post-form v-model="$page.props.form.data" method="put"/>
     </app-wrp>
 </template>
