@@ -80,6 +80,11 @@ class User extends Authenticatable
         $roles = $this->roles->pluck('slug')->toArray();
         return in_array('moderator', $roles);
     }
+    //Контакти користувачів
+    public function contacts()
+    {
+        return $this->belongsToMany(self::class, 'user_contacts');
+    }
 
 
 }
