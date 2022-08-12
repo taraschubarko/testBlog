@@ -7,9 +7,6 @@ use App\Models\ImageF;
 use App\Models\Post;
 use App\Services\Contracts\ImageFServiceInterface;
 use App\Services\Contracts\PostServiceInterface;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class PostService implements PostServiceInterface
 {
