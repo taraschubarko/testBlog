@@ -16,7 +16,7 @@ use Inertia\Inertia;
 Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [\App\Http\Controllers\PostController::class, 'show'])
     ->middleware(['postViewOnlyAuth'])
-    ->name('post.slug');
+    ->name('post.show');
 
 Route::middleware('guest')->prefix('auth')->group(function (){
     Route::get('signIn', [\App\Http\Controllers\Auth\SignInController::class, 'create'])->name('login');
@@ -31,10 +31,9 @@ Route::middleware('auth')->group(function () {
     //Пости авторизованого користувача
     Route::get('my-posts', [\App\Http\Controllers\UserPostsController::class, 'index'])->name('my.posts');
     //Керування постами
-    Route::prefix('post')->name('post.')->group(function () {
-        Route::get('blog/create', [\App\Http\Controllers\PostController::class, 'create'])->name('create');
-        Route::post('create', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
-        Route::get('{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('edit');
-    });
-
+    Route::get('post/blog/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+    Route::get('post/{post}/delete', [\App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
+    Route::resource('post', \App\Http\Controllers\PostController::class)->except(['show', 'create', 'destroy']);
+    //Видалення фото
+    Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])->name('image.destroy');
 });

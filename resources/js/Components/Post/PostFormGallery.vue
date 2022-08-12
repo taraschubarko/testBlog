@@ -3,7 +3,7 @@
     <div class="col-4" v-for="(item,k) in modelValue">
         <q-img :src="`/images/medium/${item.path}`">
             <div class="absolute-bottom text-subtitle1 text-center">
-                <q-btn icon="delete" color="white" flat round dense/>
+                <q-btn icon="delete" color="white" flat round dense :href="route('image.destroy', item)"/>
             </div>
         </q-img>
     </div>

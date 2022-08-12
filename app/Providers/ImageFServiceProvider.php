@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Providers;
+
 use Illuminate\Support\ServiceProvider;
 
-class PostServiceProvider extends ServiceProvider
+class ImageFServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,8 +14,8 @@ class PostServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Contracts\PostServiceInterface::class,
-            \App\Services\PostService::class,
+            \App\Services\Contracts\ImageFServiceInterface::class,
+            \App\Services\ImageFService::class,
         );
     }
 
@@ -25,6 +26,6 @@ class PostServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind('post', \App\Services\PostService::class);
+        $this->app->bind('imageF', \App\Services\ImageFService::class);
     }
 }

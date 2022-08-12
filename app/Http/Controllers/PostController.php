@@ -67,4 +67,25 @@ class PostController extends Controller
         ]);
     }
 
+    public function update(Request $request, Post $post)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'text' => 'required|string',
+            'type' => 'required|string',
+            'image_files' => 'sometimes',
+        ]);
+        $post->update($data);
+        if($data['image_files']){
+            $this->postService->uploadImages($data['image_files'], $post);
+        }
+        return redirect(route('my.posts'));
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->back();
+    }
+
 }

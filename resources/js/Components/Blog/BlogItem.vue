@@ -3,7 +3,7 @@
         <q-card-section horizontal>
             <q-card-section class="q-pt-xs">
                 <div class="text-h5 q-mt-sm q-mb-xs">
-                    <app-link :label="item.name" :href="route('post.slug', item)"/>
+                    <app-link :label="item.name" :href="route('post.show', item)"/>
                 </div>
                 <div class="text-caption text-grey">{{item.text}}</div>
                 <div class="row q-mt-lg">

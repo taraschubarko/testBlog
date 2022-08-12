@@ -57,7 +57,7 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import {required, email, minLength} from '@vuelidate/validators'
+import {required, requiredIf, minLength} from '@vuelidate/validators'
 import PostFormGallery from "./PostFormGallery.vue";
 
 export default {
@@ -91,12 +91,16 @@ export default {
         }
     },
 
-    validations: {
-        form: {
-            name: {required},
-            type: {required},
-            image_files: {required},
-            text: {required, minLength: minLength(100)},
+    validations () {
+        return{
+            form: {
+                name: {required},
+                type: {required},
+                image_files: {
+                    requiredIf: requiredIf(this.method === 'post')
+                },
+                text: {required, minLength: minLength(100)},
+            }
         }
     },
 
@@ -122,7 +126,7 @@ export default {
             if (this.$vv.form.$error) {
                 return;
             }
-            switch (this.method){
+            switch (this.method) {
                 case 'post':
                     this.post()
                     break;
@@ -131,7 +135,7 @@ export default {
                     break;
             }
         },
-        post(){
+        post() {
             this.loading = true;
             this.$inertia.post(route('post.store'), this.form, {
                 onSuccess: () => {
@@ -143,9 +147,10 @@ export default {
                 }
             });
         },
-        put(){
+        put() {
             this.loading = true;
-            this.$inertia.post(route('post.update'), this.form, this.modelValue, {
+            this.form._method = 'put';
+            this.$inertia.post(route('post.update', this.modelValue), this.form, {
                 onSuccess: () => {
                     this.loading = false;
                 },
@@ -158,7 +163,7 @@ export default {
     },
 
     created() {
-        if(this.modelValue){
+        if (this.modelValue) {
             this.form = this.modelValue;
         }
     }
