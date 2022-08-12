@@ -19,6 +19,7 @@ class PostEditResource extends JsonResource
             'name' => $this->name,
             'text' => $this->text,
             'type' => $this->type,
+            'status' => $this->status,
             'image_files' => [],
         ];
     }

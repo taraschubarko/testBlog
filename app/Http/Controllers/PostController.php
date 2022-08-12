@@ -73,6 +73,7 @@ class PostController extends Controller
             'name' => 'required|string|max:255',
             'text' => 'required|string',
             'type' => 'required|string',
+            'status' => 'sometimes|string',
             'image_files' => 'sometimes',
         ]);
         $post->update($data);

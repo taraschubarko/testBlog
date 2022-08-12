@@ -32,8 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::get('my-posts', [\App\Http\Controllers\UserPostsController::class, 'index'])->name('my.posts');
     //Керування постами
     Route::get('post/blog/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
-    Route::get('post/{post}/delete', [\App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
-    Route::resource('post', \App\Http\Controllers\PostController::class)->except(['show', 'create', 'destroy']);
+    Route::get('post/{post}/delete', [\App\Http\Controllers\PostController::class, 'destroy'])
+        ->middleware(['can:delete'])
+        ->name('post.destroy');
+    Route::resource('post', \App\Http\Controllers\PostController::class)
+        ->middleware(['can:update,post', 'can:delete,post', 'can:edit,post'])
+        ->except(['show', 'create', 'destroy']);
     //Видалення фото
     Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])->name('image.destroy');
 });

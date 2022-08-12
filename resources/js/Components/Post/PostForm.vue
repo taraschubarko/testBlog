@@ -49,6 +49,12 @@
             </template>
         </q-file>
 
+        <q-radio v-model="form.status"
+                    val="moderate"
+                    label="Send for moderation"
+                    v-if="method === 'put'"
+        />
+
         <div class="text-right">
             <q-btn label="Save" icon="save" :loading="loading" color="primary" type="submit" class="q-mb-md"/>
         </div>
@@ -91,8 +97,8 @@ export default {
         }
     },
 
-    validations () {
-        return{
+    validations() {
+        return {
             form: {
                 name: {required},
                 type: {required},
