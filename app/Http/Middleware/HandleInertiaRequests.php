@@ -42,6 +42,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $user ? UserBlockResource::make($user) : ['data' => null],
+                'newNotify' => $user ? $user->unreadNotifications->count() : null,
             ],
         ]);
     }

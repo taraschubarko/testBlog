@@ -40,9 +40,15 @@ Route::middleware('auth')->group(function () {
         ->middleware(['can:update,post', 'can:edit,post'])
         ->except(['show', 'create', 'store', 'destroy']);
     //Видалення фото
-    Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])->name('image.destroy');
+    Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])
+        ->name('image.destroy');
     //Адмінка
     Route::prefix('dashboard')->name('dashboard.')->group(function (){
         Route::get('/', \App\Http\Controllers\Admin\AdminController::class)->name('home');
     });
+    //Відправка повідомлення автору
+    Route::post('message', [\App\Http\Controllers\MessageController::class, 'store'])->name('message.store');
+    Route::get('messages', [\App\Http\Controllers\MessageController::class, 'index'])->name('message.index');
+    Route::get('messages/{id}/read', [\App\Http\Controllers\MessageController::class, 'read'])
+        ->name('message.read');
 });

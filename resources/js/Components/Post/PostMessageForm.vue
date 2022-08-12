@@ -60,9 +60,15 @@ export default {
                 return;
             }
             this.loading = true;
-            this.$inertia.post(route('login'), this.form, {
+            this.form.user_id = this.item.id;
+            this.$inertia.post(route('message.store'), this.form, {
                 onSuccess: () => {
                     this.loading = false;
+                    this.$q.notify({
+                        type: 'positive',
+                        message: 'Message sending!'
+                    });
+                    this.$emit('close')
                 },
                 onError: (err) => {
                     this.loading = false;

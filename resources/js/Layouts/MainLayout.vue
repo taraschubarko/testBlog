@@ -15,6 +15,9 @@
                     <app-link label="Sign In" :href="route('login')"/> /
                     <app-link label="Sign Up" :href="route('register')"/>
                 </div>
+                <q-btn v-if="$user" round flat dense icon="notifications" :href="route('message.index')">
+                    <q-badge v-if="$newNotify" floating color="red" rounded :label="$newNotify" />
+                </q-btn>
                 <user-avatar-menu v-if="$user"/>
             </q-toolbar>
         </q-header>

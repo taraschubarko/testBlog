@@ -25,6 +25,7 @@ createInertiaApp({
             .mixin({
                 computed:{
                     $user: () => usePage().props.value.auth.user.data,
+                    $newNotify: () => usePage().props.value.auth.newNotify,
                 },
                 methods:{
                     $notyErr:(err) => {

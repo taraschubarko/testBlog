@@ -12,7 +12,7 @@
                     <q-btn icon="close" flat round dense v-close-popup/>
                 </q-card-section>
                 <q-card-section style="width: 400px">
-                    <post-message-form :item="item"/>
+                    <post-message-form :item="item" @close="dialog = false"/>
                 </q-card-section>
             </q-card>
         </q-dialog>
