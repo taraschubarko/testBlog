@@ -24,7 +24,7 @@ createInertiaApp({
             })
             .mixin({
                 computed:{
-                    $user: () => usePage().props.value.auth.user,
+                    $user: () => usePage().props.value.auth.user.data,
                 },
                 methods:{
                     $notyErr:(err) => {
@@ -37,6 +37,9 @@ createInertiaApp({
                             html: true,
                             message: `<ul>${li}</ul>`
                         });
+                    },
+                    $hasRole(role){
+                        return this.$user.roles.includes(role);
                     }
                 }
             })

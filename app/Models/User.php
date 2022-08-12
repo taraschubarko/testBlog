@@ -69,5 +69,17 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function isAdmin(): bool
+    {
+        $roles = $this->roles->pluck('slug')->toArray();
+        return in_array('admin', $roles);
+    }
+
+    public function isModerator(): bool
+    {
+        $roles = $this->roles->pluck('slug')->toArray();
+        return in_array('moderator', $roles);
+    }
+
 
 }

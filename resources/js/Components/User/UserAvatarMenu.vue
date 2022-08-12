@@ -2,7 +2,7 @@
     <div class="UserAvatarMenu">
         <div class="row">
             <div class="col-8 flex flex-center">
-                <div>{{$user.name}}</div>
+                <div>{{ $user.name }}</div>
             </div>
             <div class="col-4">
                 <q-avatar color="red" class="cursor-pointer" text-color="white" icon="person"/>
@@ -14,6 +14,13 @@
                         <q-item clickable v-close-popup :href="route('my.posts')">
                             <q-item-section>My posts</q-item-section>
                         </q-item>
+
+                        <q-separator v-if="$hasRole('admin') || $hasRole('moderator')"/>
+                        <q-item clickable v-close-popup v-if="$hasRole('admin') || $hasRole('moderator')">
+                            <q-item-section>Dashboard</q-item-section>
+                        </q-item>
+                        <q-separator/>
+
                         <q-item clickable v-close-popup :href="route('logout')">
                             <q-item-section>Logout</q-item-section>
                         </q-item>
@@ -33,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.UserAvatarMenu{
+.UserAvatarMenu {
     width: 200px;
 }
 </style>
