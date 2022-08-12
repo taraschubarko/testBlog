@@ -30,4 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [\App\Http\Controllers\Auth\SignInController::class, 'destroy'])->name('logout');
     //Пости авторизованого користувача
     Route::get('my-posts', [\App\Http\Controllers\UserPostsController::class, 'index'])->name('my.posts');
+    //Керування постами
+    Route::prefix('post')->name('post.')->group(function () {
+        Route::get('blog/create', [\App\Http\Controllers\PostController::class, 'create'])->name('create');
+        Route::post('create', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
+        Route::get('{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('edit');
+    });
+
 });

@@ -3,9 +3,11 @@
         <q-header class="bg-primary text-white">
             <q-toolbar>
                 <q-toolbar-title>
-                    <q-avatar>
-                        <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-                    </q-avatar>
+                    <app-link :href="route('home')">
+                        <q-avatar>
+                            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+                        </q-avatar>
+                    </app-link>
                     Blog
                 </q-toolbar-title>
                 <div class="sig" v-if="!$user">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Facades\PostFacade;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;

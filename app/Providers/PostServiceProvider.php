@@ -26,6 +26,6 @@ class PostServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind('post', \App\Services\PostService::class);
     }
 }

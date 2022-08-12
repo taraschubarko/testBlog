@@ -9,6 +9,7 @@
             <q-table
                 :rows="$page.props.items.data"
                 hide-pagination
+                :rows-per-page-options="[0]"
             >
                 <template v-slot:header>
                     <q-tr>
@@ -32,7 +33,7 @@
                         </q-td>
                         <q-td class="text-center">{{ formatDate(props.row.created_at, 'DD.MM.YYYY') }}</q-td>
                         <q-td class="text-right">
-                            <q-btn icon="edit" flat round dense size="sm" class="q-mr-sm"/>
+                            <q-btn icon="edit" flat round dense size="sm" class="q-mr-sm" :href="route('post.edit', props.row)"/>
                             <q-btn icon="delete" color="red" flat round dense size="sm"/>
                         </q-td>
                     </q-tr>

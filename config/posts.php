@@ -3,14 +3,14 @@
 return [
     //Статус посту
     'status' => [
-        'crated' => 'Новий',
-        'published' => 'Опублікований',
-        'moderate' => 'На модерації',
-        'canceled' => 'Відмова'
+        'crated' => 'New',
+        'published' => 'Published',
+        'moderate' => 'Moderate',
+        'canceled' => 'Canceled'
     ],
     //Тип посту
     'type' => [
-        'public' => 'Публічний',
-        'private' => 'Приватний'
+        'public' => 'Public',
+        'private' => 'Private'
     ],
 ];

@@ -8,7 +8,7 @@
                 <q-avatar color="red" class="cursor-pointer" text-color="white" icon="person"/>
                 <q-menu>
                     <q-list style="min-width: 100px">
-                        <q-item clickable v-close-popup>
+                        <q-item clickable v-close-popup :href="route('post.create')">
                             <q-item-section>New post</q-item-section>
                         </q-item>
                         <q-item clickable v-close-popup :href="route('my.posts')">
