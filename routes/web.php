@@ -41,4 +41,8 @@ Route::middleware('auth')->group(function () {
         ->except(['show', 'create', 'store', 'destroy']);
     //Видалення фото
     Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])->name('image.destroy');
+    //Адмінка
+    Route::prefix('dashboard')->name('dashboard.')->group(function (){
+        Route::get('/', \App\Http\Controllers\Admin\AdminController::class)->name('home');
+    });
 });

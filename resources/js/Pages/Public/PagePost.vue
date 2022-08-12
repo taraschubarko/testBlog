@@ -35,8 +35,7 @@
                                 <div class="col-11">
                                     <small class="text-grey-5">Author</small>
                                     <div class="q-mb-md">{{ item.user.name }}</div>
-                                    <q-btn icon="send" outline class="q-pl-md q-pr-md" label="send message" dense
-                                           size="sm"/>
+                                    <post-message v-if="$user && $user.id !== item.user.id" :item="item.user"/>
                                 </div>
                             </div>
                         </q-card-section>
@@ -58,10 +57,11 @@
 <script>
 import MainLayout from "../../Layouts/MainLayout.vue";
 import AppHead from "../../Components/App/AppHead.vue";
+import PostMessage from "../../Components/Post/PostMessage.vue";
 
 export default {
     name: "PagePost",
-    components: {AppHead, MainLayout},
+    components: {PostMessage, AppHead, MainLayout},
 
     data() {
         return {

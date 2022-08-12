@@ -15,7 +15,6 @@
                     <div class="col-10">
                         <small class="text-grey-5">Author</small>
                         <div class="q-mb-md">{{item.user.name}}</div>
-                        <q-btn icon="send" outline class="q-pl-md q-pr-md" label="send message" dense size="sm"/>
                     </div>
                 </div>
             </q-card-section>

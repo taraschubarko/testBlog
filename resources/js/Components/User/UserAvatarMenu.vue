@@ -16,7 +16,9 @@
                         </q-item>
 
                         <q-separator v-if="$hasRole('admin') || $hasRole('moderator')"/>
-                        <q-item clickable v-close-popup v-if="$hasRole('admin') || $hasRole('moderator')">
+                        <q-item clickable v-close-popup v-if="$hasRole('admin') || $hasRole('moderator')"
+                            :href="route('dashboard.home')"
+                        >
                             <q-item-section>Dashboard</q-item-section>
                         </q-item>
                         <q-separator/>
