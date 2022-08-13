@@ -3,6 +3,9 @@
         <slot name="head"/>
     </app-head>
     <admin-layout>
+        <template v-slot:name><slot name="name"/></template>
+        <template v-slot:subh><slot name="subh"/></template>
+        <slot name="top"/>
         <q-page :class="pageClass">
             <slot/>
         </q-page>

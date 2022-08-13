@@ -14,6 +14,7 @@
         <q-item
             clickable
             v-ripple
+            :href="route('dashboard.posts.index')"
         >
             <q-item-section avatar>
                 <q-icon name="description"/>
@@ -25,7 +26,7 @@
         <q-item
             clickable
             v-ripple
-
+            :href="route('dashboard.users.index')"
         >
             <q-item-section avatar>
                 <q-icon name="people_alt"/>

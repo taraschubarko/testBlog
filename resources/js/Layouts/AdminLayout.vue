@@ -9,9 +9,10 @@
                     <q-avatar>
                         <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
                     </q-avatar>
-                    Dashboard
+                    Dashboard <slot name="name"/>
                 </q-toolbar-title>
             </q-toolbar>
+            <slot name="subh"/>
         </q-header>
 
         <q-drawer class="bg-grey-9 text-white" show-if-above v-model="leftDrawerOpen" side="left">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\AdminPostsListResource;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AdminPostController extends Controller
@@ -10,11 +12,15 @@ class AdminPostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function index()
     {
-        //
+        $posts = Post::query()->orderByDesc('created_at')->paginate();
+        $posts = $posts ? AdminPostsListResource::collection($posts) : null;
+        return inertia('Admin/PageAdminPosts', [
+            'items' => $posts
+        ]);
     }
 
     /**

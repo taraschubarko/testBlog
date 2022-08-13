@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     //Адмінка
     Route::prefix('dashboard')->name('dashboard.')->group(function (){
         Route::get('/', \App\Http\Controllers\Admin\AdminController::class)->name('home');
+        Route::resource('posts', \App\Http\Controllers\Admin\AdminPostController::class);
+        Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
     });
     //Відправка повідомлення автору
     Route::post('message', [\App\Http\Controllers\MessageController::class, 'store'])->name('message.store');
