@@ -58,7 +58,6 @@
                 </div>
             </template>
         </q-table>
-
     </admin-wrp>
 </template>
 

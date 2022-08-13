@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('status')->default(true);
             $table->string('slug');
             $table->rememberToken();
             $table->timestamps();

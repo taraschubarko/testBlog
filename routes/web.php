@@ -45,6 +45,14 @@ Route::middleware('auth')->group(function () {
     //Адмінка
     Route::prefix('dashboard')->name('dashboard.')->group(function (){
         Route::get('/', \App\Http\Controllers\Admin\AdminController::class)->name('home');
+        Route::get('getCountries', [\App\Http\Controllers\Admin\AdminController::class, 'getCountries'])
+            ->name('getCountries');
+        Route::get('getCities/{country}', [\App\Http\Controllers\Admin\AdminController::class, 'getCities'])
+            ->name('getCities');
+        Route::get('getRoles', [\App\Http\Controllers\Admin\AdminController::class, 'getRoles'])
+            ->name('getRoles');
+        Route::get('getStatus', [\App\Http\Controllers\Admin\AdminController::class, 'getStatus'])
+            ->name('getStatus');
         Route::resource('posts', \App\Http\Controllers\Admin\AdminPostController::class);
         Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
     });
