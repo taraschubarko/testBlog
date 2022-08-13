@@ -83,7 +83,7 @@ class User extends Authenticatable
     //Контакти користувачів
     public function contacts()
     {
-        return $this->belongsToMany(self::class, 'user_contacts');
+        return $this->belongsToMany(self::class, 'user_contacts', 'contact_id');
     }
 
 

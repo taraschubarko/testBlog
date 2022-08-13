@@ -51,4 +51,6 @@ Route::middleware('auth')->group(function () {
     Route::get('messages', [\App\Http\Controllers\MessageController::class, 'index'])->name('message.index');
     Route::get('messages/{id}/read', [\App\Http\Controllers\MessageController::class, 'read'])
         ->name('message.read');
+    //Контакти користувача
+    Route::get('contacts', \App\Http\Controllers\ContactsController::class)->name('my.contacts');
 });

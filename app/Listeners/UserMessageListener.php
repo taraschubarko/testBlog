@@ -29,11 +29,11 @@ class UserMessageListener
         $notification = $event->notification;
         $user = $event->notifiable;
         $sender = User::query()->find($notification->sender_id);
-        if(!$user->contacts()->where('contact_id', $sender->id)->first()){
-            $user->contacts()->attach($user, ['contact_id' => $sender->id]);
+        if(!$user->contacts()->where('user_id', $sender->id)->first()){
+            $user->contacts()->attach($user, ['user_id' => $sender->id]);
         }
-        if(!$sender->contacts()->where('contact_id', $user->id)->first()){
-            $sender->contacts()->attach($sender, ['contact_id' => $user->id]);
+        if(!$sender->contacts()->where('user_id', $user->id)->first()){
+            $sender->contacts()->attach($sender, ['user_id' => $user->id]);
         }
     }
 }
