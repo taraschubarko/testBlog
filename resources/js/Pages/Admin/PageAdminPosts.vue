@@ -3,7 +3,7 @@
         <template v-slot:name>- Posts</template>
         <template v-slot:subh>
             <q-bar class="bg-primary">
-                <q-btn label="Create post" icon="add" flat class="text-white"/>
+                <q-btn :href="route('dashboard.posts.create')" label="Create post" icon="add" flat class="text-white"/>
             </q-bar>
         </template>
         <q-table class="no-border-radius"
@@ -42,9 +42,8 @@
                     </q-td>
                     <q-td>
                         <q-btn icon="edit" flat round dense size="sm" class="q-mr-sm"
-                               :href="route('post.edit', props.row)"/>
-                        <q-btn icon="delete" color="red" flat round dense size="sm"
-                               :href="route('post.destroy', props.row)"/>
+                               :href="route('dashboard.posts.edit', props.row)"/>
+                        <admin-delete-button :route="route('dashboard.posts.destroy', props.row)"/>
                     </q-td>
                 </q-tr>
             </template>
@@ -65,10 +64,11 @@
 import AdminWrp from "../../Components/Admin/AdminWrp.vue";
 import AppLink from "../../Components/App/AppLink.vue";
 import AppPagination from "../../Components/App/AppPagination.vue";
+import AdminDeleteButton from "../../Components/Admin/AdminDeleteButton.vue";
 
 export default {
     name: "PageAdminPosts",
-    components: {AppPagination, AppLink, AdminWrp},
+    components: {AdminDeleteButton, AppPagination, AppLink, AdminWrp},
 }
 </script>
 

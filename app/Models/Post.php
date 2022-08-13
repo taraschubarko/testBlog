@@ -41,7 +41,7 @@ class Post extends Model
 
     public function note()
     {
-        return $this->hasOne(PostNote::class);
+        return $this->hasOne(PostNote::class)->latest();
     }
 
     public function user()
