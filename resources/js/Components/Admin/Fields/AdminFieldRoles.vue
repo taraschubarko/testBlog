@@ -55,7 +55,7 @@ export default {
         getRoles(){
             this.options = [];
             this.items = [];
-            axios.get(route('dashboard.getRoles')).then(res => {
+            axios.get(route('config.getRoles')).then(res => {
                 res.data.forEach(v => {
                     this.options.push({
                         label: v.name,

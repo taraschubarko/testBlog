@@ -53,7 +53,7 @@ export default {
         getStatus(){
             this.options = [];
             this.items = [];
-            axios.get(route('dashboard.getStatus')).then(res => {
+            axios.get(route('config.getStatus')).then(res => {
                 res.data.forEach((v,k) => {
                     this.options.push({
                         label: v,

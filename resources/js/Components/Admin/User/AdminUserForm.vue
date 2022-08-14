@@ -51,12 +51,14 @@
                              @blur="$vv.form.country.$touch"
                              :error="$vv.form.country.$error"
                              :errors="$vv.form.country.$errors"
+                             square filled
         />
         <admin-field-city v-model="form.city" v-model:country="form.country"
                           class="q-mb-sm"
                           @blur="$vv.form.city.$touch"
                           :error="$vv.form.city.$error"
                           :errors="$vv.form.city.$errors"
+                          square filled
         />
         <q-input v-model="form.password" label="Password" dense square filled
                  @blur="$vv.form.password.$touch"

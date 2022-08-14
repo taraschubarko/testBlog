@@ -48,25 +48,20 @@
             </div>
         </div>
 
-        <q-input v-model="form.country" label="Country" dense outlined
-                 @blur="$vv.form.country.$touch"
-                 :error="$vv.form.country.$error"
-                 class="q-mb-sm"
-        >
-            <template v-slot:error>
-                <div v-for="(item,k) in $vv.form.country.$errors">{{ item.$message }}</div>
-            </template>
-        </q-input>
-
-        <q-input v-model="form.city" label="City" dense outlined
-                 @blur="$vv.form.city.$touch"
-                 :error="$vv.form.city.$error"
-                 class="q-mb-sm"
-        >
-            <template v-slot:error>
-                <div v-for="(item,k) in $vv.form.city.$errors">{{ item.$message }}</div>
-            </template>
-        </q-input>
+        <admin-field-country v-model="form.country"
+                             class="q-mb-sm"
+                             @blur="$vv.form.country.$touch"
+                             :error="$vv.form.country.$error"
+                             :errors="$vv.form.country.$errors"
+                             outlined
+        />
+        <admin-field-city v-model="form.city" v-model:country="form.country"
+                          class="q-mb-sm"
+                          @blur="$vv.form.city.$touch"
+                          :error="$vv.form.city.$error"
+                          :errors="$vv.form.city.$errors"
+                          outlined
+        />
 
         <q-input v-model="form.password" label="Password" dense outlined
                  @blur="$vv.form.password.$touch"
@@ -103,10 +98,12 @@
 import useVuelidate from "@vuelidate/core";
 import {email, minLength, required, sameAs} from "@vuelidate/validators";
 import AppLink from "../App/AppLink.vue";
+import AdminFieldCountry from "../Admin/Fields/AdminFieldCountry.vue";
+import AdminFieldCity from "../Admin/Fields/AdminFieldCity.vue";
 
 export default {
     name: "SignUpForm",
-    components: {AppLink},
+    components: {AdminFieldCity, AdminFieldCountry, AppLink},
     setup () {
         return { v$: useVuelidate() }
     },

@@ -1,5 +1,5 @@
 <template>
-    <q-select v-model="model" label="Country" dense square filled
+    <q-select v-model="model" label="Country" dense
               :options="options"
               map-options
               emit-value
@@ -9,6 +9,10 @@
               autocomplete="off"
               @blur="$emit('blur')"
               :error="error"
+              :square="square"
+              :filled="filled"
+              :outlined="outlined"
+
     >
                 <template v-slot:error>
                     <div v-for="(item,k) in errors">{{ item.$message }}</div>
@@ -35,6 +39,9 @@ export default {
             type: Array,
             default: ()=>[]
         },
+        square: false,
+        filled: false,
+        outlined: false,
     },
     data() {
         return {
@@ -69,7 +76,7 @@ export default {
     },
 
     created() {
-        axios.get(route('dashboard.getCountries')).then(res => {
+        axios.get(route('config.getCountries')).then(res => {
             res.data.forEach(v => {
                 this.items.push({
                     label: v.country,
