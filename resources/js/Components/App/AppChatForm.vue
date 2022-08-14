@@ -2,7 +2,7 @@
 <q-form class="AppChatForm" @submit="onSubmit">
     <div class="row">
         <div class="col-11">
-            <input v-model="form.message" type="text" class="full-width" @keyup.enter="onSubmit">
+            <input v-model="form.message" placeholder="Message...." type="text" class="full-width" @keyup.enter="onSubmit">
         </div>
         <div class="col-1 text-right">
             <q-btn icon="send" :loading="loading" flat round dense type="submit"/>
