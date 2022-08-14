@@ -43,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::get('image/{image}/delete', [\App\Http\Controllers\ImageFController::class, 'destroy'])
         ->name('image.destroy');
     //Адмінка
-    Route::prefix('dashboard')->name('dashboard.')->group(function (){
+    Route::prefix('dashboard')
+        ->middleware(['admin'])
+        ->name('dashboard.')->group(function (){
         Route::get('/', \App\Http\Controllers\Admin\AdminController::class)->name('home');
         Route::get('getCountries', [\App\Http\Controllers\Admin\AdminController::class, 'getCountries'])
             ->name('getCountries');
@@ -54,7 +56,8 @@ Route::middleware('auth')->group(function () {
         Route::get('getStatus', [\App\Http\Controllers\Admin\AdminController::class, 'getStatus'])
             ->name('getStatus');
         Route::resource('posts', \App\Http\Controllers\Admin\AdminPostController::class);
-        Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class);
+        Route::resource('users', \App\Http\Controllers\Admin\AdminUserController::class)
+            ->middleware(['notModerator']);
     });
     //Відправка повідомлення автору
     Route::post('message', [\App\Http\Controllers\MessageController::class, 'store'])->name('message.store');
