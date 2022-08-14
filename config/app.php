@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PostServiceProvider::class,
         App\Providers\ImageFServiceProvider::class,
+        App\Providers\ChatServiceProvider::class,
 
     ],
 

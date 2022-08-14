@@ -10,11 +10,11 @@
 
         <q-list bordered separator v-if="$page.props.items">
             <q-item clickable v-ripple v-for="(item,k) in $page.props.items.data" :key="k">
-                <q-item-section avatar>
+                <q-item-section avatar @click="$inertia.get(route('chat.user.messages', item))">
                     <q-avatar color="primary" text-color="white" class="q-mr-md">{{item.first_letter}}</q-avatar>
                 </q-item-section>
 
-                <q-item-section>
+                <q-item-section @click="$inertia.get(route('chat.user.messages', item))">
                     <q-item-label>{{item.name}}</q-item-label>
                     <q-item-label caption>
                         <div><label>gender:</label> {{item.gender.label}}</div>

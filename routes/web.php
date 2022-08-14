@@ -56,6 +56,11 @@ Route::middleware('auth')->group(function () {
     Route::get('messages', [\App\Http\Controllers\MessageController::class, 'index'])->name('message.index');
     Route::get('messages/{id}/read', [\App\Http\Controllers\MessageController::class, 'read'])
         ->name('message.read');
+    //Переписка в чаті
+    Route::prefix('chat')->name('chat.')->group(function (){
+        Route::get('{user:slug}/messages', [\App\Http\Controllers\MessageController::class, 'chat'])
+            ->name('user.messages');
+    });
     //Контакти користувача
     Route::get('contacts', \App\Http\Controllers\ContactsController::class)->name('my.contacts');
 });
@@ -69,4 +74,8 @@ Route::prefix('config')->name('config.')->group(function (){
         ->name('getRoles');
     Route::get('getStatus', [\App\Http\Controllers\Admin\AdminController::class, 'getStatus'])
         ->name('getStatus');
+});
+
+Route::get('test', function (){
+    \App\Facades\ChatFacade::chatWith(\App\Models\User::find(5));
 });
