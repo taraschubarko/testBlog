@@ -18,12 +18,21 @@ class AdminSeeder extends Seeder
     {
         $adminRole = Role::query()->where('slug', 'admin')->first();
         $modRole = Role::query()->where('slug', 'moderator')->first();
+
+
         User::factory(1)->create([
-            'name' => 'Чубарко Тарас',
-            'email' => 'tchubarko@gmail.com',
+            'name' => 'Админ',
+            'email' => 'admin@admin.com',
             'password' => 1234567890,
         ])->map(function ($user) use ($adminRole, $modRole){
             $user->roles()->attach($adminRole);
+        });
+
+        User::factory(1)->create([
+            'name' => 'Модератор',
+            'email' => 'moderator@moderator.com',
+            'password' => 1234567890,
+        ])->map(function ($user) use ($adminRole, $modRole){
             $user->roles()->attach($modRole);
         });
     }
